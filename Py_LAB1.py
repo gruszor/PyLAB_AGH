@@ -1,3 +1,57 @@
+#ad.2
+#Napisz skrypt, który pyta o imię, nazwisko i rok urodzenia
+#(powinny być podane w jednej linii)
+
+
+dane = input("Podaj: Imie, Nazwisko, Date urodzenia").split(' ')
+
+print(dane)
+
+
+#ad.3
+#Napisz skrypt realizujący funkcję zamka szyfrowego. Prosi
+#o podanie kodu i następnie sprawdza czy jest on zgodny z
+#wcześniej wprowadzonym kodem
+
+
+password = 'asd123'
+
+write_password = input("Write your password")
+
+if password == write_password:
+    print('access granted')
+else:
+    print('access deny')
+    
+#ad.4
+#Napisz skrypt zliczający ilość plików w katalogu /dev, skorzystaj
+#ze standardowej biblioteki - os
+
+import os
+
+path = 'D:\Pobrane\ALDEC ACTIV HDL'
+file_list = os.listdir(path)
+
+print('\n'.join(file_list))
+
+print('Amounth of files in directory: ', len(file_list))
+
+
+#ad.4
+#Napisz rekurencyjne przejście drzewa katalogów i wypisanie
+#plików, które znajdują się w eksplorowanej strukturze
+
+import os
+
+path = 'D:\Pobrane\ALDEC ACTIV HDL'
+stop_path= 'D:\ '
+
+while path != stop_path[:-1]:
+    print(path)
+    print('\n'.join(os.listdir(path)))
+    path = os.path.dirname(path)
+print(path)
+print('\n'.join(os.listdir(path)))
 
 #Konwersja rozszerzenia
 #Napisz skrypt konwersji rozszerzeń plików *.jpg na
@@ -213,6 +267,18 @@ matrix_adder(a,b)
 
 #Mnożenie macierzy
 #Napisz skrypt realizujący mnożenie dwóch macierzy o rozmiarach 8x8
+import numpy as np
+
+size = 8
+array1 = np.random.randint(1,10,(size, size))
+array2 = np.random.randint(1,10,(size, size))
+
+array_multiplcation_score=np.multiply(array1, array2)
+
+print(array_multiplcation_score)
+
+#Napisz skrypt wyliczający wyznacznik macierzy wygenerowanej losowo
+
 
 import numpy as np
 
