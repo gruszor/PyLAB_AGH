@@ -216,7 +216,7 @@ matrix_adder(a,b)
 
 import numpy as np
 
-def determinant(size = 8)
+def determinant(size = 8):
     array = np.random.randint(1,10,(size, size))
     return np.linalg.det(array)
 
@@ -226,6 +226,70 @@ def determinant(size = 8)
 
 
 
+
+from math import atan2
+
+
+class ImaginaryNumber:
+    
+    def __init__(self, re = 0, im = 0):
+        self.re = re
+        self.im = im
+
+    def __add__(self, other):
+        return self.re + other.re, self.im + other.im
+    
+    def __sub__(self, other):
+        return  self.re - other.re, self.im - other.im
+    
+    def __mul__(self, other):
+        return  self.re * other.re - self.im * other.im, self.re * other.im + self.im * other.re
+    
+    def __truediv__(self, other):
+        n1 = (self.re * other.re + self.im * other.im)/(other.re**2 + other.im**2)
+        n2 = (self.im * other.re - self.re * other.im)/(other.re**2 + other.im**2)
+        return n1, n2
+
+    def __str__(self):
+        return(str(self.re) + ', ' + str(self.im)) 
+    
+    def module(self):
+        return (self.re**2 + self.im**2)**(1/2)
+
+    def phase(self):
+        if self.re > 0:
+            return (atan2(self.im, self.re) * 180)/3.14
+        else:
+            return ((atan2(self.im, self.re)+ 3.14) * 180)/3.14
+
+
+class Calculator:
+
+    def __init__(self, arg1 = None, arg2 = None, operator = None, result = None):
+        self.arg1 = arg1
+        self.arg2 = arg2
+        self.operator = operator
+        self.result = result
+
+    def load_data(self, arg1, arg2, operator):
+        self.arg1 = arg1
+        self.arg2 = arg2
+        self.operator = operator
+
+    def compute(self):
+        if self.operator == '+':
+            self.result = self.arg1 + self.arg2
+        elif self.operator == '-':        
+            self.result = self.arg1 - self.arg2
+        elif self.operator == '*':        
+            self.result = self.arg1 * self.arg2
+        elif self.operator == '/':        
+            self.result = self.arg1 / self.arg2
+            
+        
+
+
+        
 
 
 

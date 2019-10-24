@@ -20,6 +20,6 @@ class ImaginaryNumber:
     
     def module(self):
         return (self.re**2 + self.im**2)**1/2
-    
 
-
+    def __str__(self):
+        return(str(self.re) + ', ' + str(self.im)) 
