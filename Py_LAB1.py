@@ -2,18 +2,18 @@
 #Napisz skrypt, który pyta o imię, nazwisko i rok urodzenia
 #(powinny być podane w jednej linii)
 
-
+'''
 dane = input("Podaj: Imie, Nazwisko, Date urodzenia").split(' ')
 
 print(dane)
-
+'''
 
 #ad.3
 #Napisz skrypt realizujący funkcję zamka szyfrowego. Prosi
 #o podanie kodu i następnie sprawdza czy jest on zgodny z
 #wcześniej wprowadzonym kodem
 
-
+'''
 password = 'asd123'
 
 write_password = input("Write your password")
@@ -22,11 +22,11 @@ if password == write_password:
     print('access granted')
 else:
     print('access deny')
-    
+'''    
 #ad.4
 #Napisz skrypt zliczający ilość plików w katalogu /dev, skorzystaj
 #ze standardowej biblioteki - os
-
+'''
 import os
 
 path = 'D:\Pobrane\ALDEC ACTIV HDL'
@@ -35,12 +35,12 @@ file_list = os.listdir(path)
 print('\n'.join(file_list))
 
 print('Amounth of files in directory: ', len(file_list))
-
+'''
 
 #ad.4
 #Napisz rekurencyjne przejście drzewa katalogów i wypisanie
 #plików, które znajdują się w eksplorowanej strukturze
-
+'''
 import os
 
 path = 'D:\Pobrane\ALDEC ACTIV HDL'
@@ -52,7 +52,7 @@ while path != stop_path[:-1]:
     path = os.path.dirname(path)
 print(path)
 print('\n'.join(os.listdir(path)))
-
+'''
 #Konwersja rozszerzenia
 #Napisz skrypt konwersji rozszerzeń plików *.jpg na
 #*.png (uprzednio stwórz zestaw 4 plików z rozszerzeniem *.jpg)
@@ -238,7 +238,7 @@ dot_product(a, b)
 #Napisz skrypt sumujący dwie macierze o rozmiarach 128x128.
 #Wykorzystaj generator liczb losowych do wygenerowania
 #macierzy.
-
+'''
 def matrix_adder(matrix1, matrix2):
     """Funcktion which add two matrix
 
@@ -263,10 +263,11 @@ def matrix_adder(matrix1, matrix2):
 a = [[1,2],[3,4]]
 b = [[-1,-2],[-3,-4]]
 matrix_adder(a,b)
-
+'''
 
 #Mnożenie macierzy
 #Napisz skrypt realizujący mnożenie dwóch macierzy o rozmiarach 8x8
+'''
 import numpy as np
 
 size = 8
@@ -285,14 +286,14 @@ import numpy as np
 def determinant(size = 8):
     array = np.random.randint(1,10,(size, size))
     return np.linalg.det(array)
-
+'''
 #########################################################################
 #########################################################################
 #########################################################################
 
 
 
-
+'''
 from math import atan2
 
 
@@ -328,7 +329,8 @@ class ImaginaryNumber:
         else:
             return ((atan2(self.im, self.re)+ 3.14) * 180)/3.14
 
-
+'''
+'''
 class Calculator:
 
     def __init__(self, arg1 = None, arg2 = None, operator = None, result = None):
@@ -351,16 +353,64 @@ class Calculator:
             self.result = self.arg1 * self.arg2
         elif self.operator == '/':        
             self.result = self.arg1 / self.arg2
-            
+'''            
+
+'''
+from xml.dom import minidom
+
+dom = minidom.parse('movies.xml')
+test = dom.getElementsByTagName('test')[0]
+print(test.firstChild.data)
+
+names = dom.getElementsByTagName('movie')
+for name in names:
+    print('title: ', name.getAttribute('title'))
+    print('year: ', name.getElementsByTagName('year')[0].firstChild.data)
+    
+    new_tag = dom.createElement('NEW')
+    name.appendChild(new_tag)
+
+    txt = dom.createTextNode('NEWTXTNEWTXTNEWTXTNEWTXT')
+    new_tag.appendChild(txt)
+
+with open('newmowies.xml','w') as f:
+    dom.writexml(f)
+'''
+import csv
+def csv_in(text, file = 'example.csv'):
+    with open(file, 'a') as file:
+        writer = csv.writer(file)
+        writer.writerow(text)
+
+def csv_out(file = 'example.csv'):
+    with open(file, 'r') as file:
+        text = file.read() 
+    print(text)
+    
+def csv_clear(file = 'example.csv'):
+    with open(file, 'w') as file:
+        print('cleared')
+
+def to_csv(file = 'example.csv'):
+    data = input('enter your name, surname and date of birth surrounded by space')
+    data = data.split(' ')
+    csv_in(data, file)
+      
+def csv_del(line, file = 'example.csv'):
+    x = None
+    with open(file, 'r+') as f:
+        x = f.read()
+        x = x.split('\n\n')
+        x.pop(-1)
+        f.truncate(0)
+        for row in x:
+            x = list(row)
+            x[:] = (value for value in x if value != ',')
+            print(x)
+            csv_in([row], file)
         
 
 
-        
-
-
-
-
-    
 
 
 
@@ -373,10 +423,3 @@ class Calculator:
 
 
 
-
-
-
-
-
-
-    
