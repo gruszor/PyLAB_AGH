@@ -408,6 +408,9 @@ def csv_del(line, file = 'example.csv'):
             x[:] = (value for value in x if value != ',')
             print(x)
             csv_in([row], file)
+
+
+print('dupa')
         
 
 
